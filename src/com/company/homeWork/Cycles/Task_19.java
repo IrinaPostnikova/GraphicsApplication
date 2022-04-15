@@ -27,26 +27,25 @@ public class Task_19 {
 
 
 
- /*   //public static void task19_2way()
-    public static void task19() {
+ /*   //2way()
+
+
         Scanner scanner = new Scanner(System.in);
         int a = scanner.nextInt();
-        boolean flag = false;
+         boolean flag = false;
         for (int i = 1; i <= Math.sqrt(a); i++) {
             for (int j = i; j <= Math.sqrt(a); j++) {
                 if (i * i + j * j == a) {
                     System.out.println("Можно");
-
-                    return;
+                      flag = true;
+                      break;
+                   // return;
                 }
-
             }
-            if (flag) break;
+             if (flag) break;
         }
-        System.out.println("нет");
-    }*/
-
-
+        if (!flag)
+        System.out.println("нельзя");*/
 
 
     }
