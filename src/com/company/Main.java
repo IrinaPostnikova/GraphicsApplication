@@ -1,9 +1,6 @@
 package com.company;
 
-import com.company.figures.Point;
-import com.company.figures.Rectangle;
-import com.company.figures.Triangle;
-import com.company.figures.axisPoint;
+import com.company.figures.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,10 +43,18 @@ public class Main {
         pointsTr.add(p2);
         pointsTr.add(p3);
 
+        ArrayList<Point> pointsPoly = new ArrayList<>(Arrays.asList(p2, p4, p3,p1));
+        pointsPoly.add(p1);
+        pointsPoly.add(p2);
+        pointsPoly.add(p3);
+        pointsPoly.add(p4);
+
+
 
         System.out.println(p1.toString());
         System.out.println(p2.toString());
         System.out.println(p3.toString());
+
         axisPoint ap1 = new axisPoint(0, 1);
         System.out.println(ap1);
 
@@ -59,6 +64,9 @@ public class Main {
 
         Rectangle rectangle = new Rectangle(pointsRect);
         System.out.println(rectangle);
+
+        Polygone polygone = new Polygone(pointsPoly);
+        System.out.println(polygone);
 
 
         //Figure f1 = new Triangle(points);

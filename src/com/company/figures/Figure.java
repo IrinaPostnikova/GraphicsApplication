@@ -10,7 +10,7 @@ public abstract class Figure {
     }
 
     public String toString() {
-        return "Hello, I`m a " + this.getClass().getSimpleName().toString() + "  with points:  " + this.points;
+        return "Hello, I`m a " + this.getClass().getSimpleName().toString() + "  with points:  " + points;
     }
 
     public double getPerimeter() {
