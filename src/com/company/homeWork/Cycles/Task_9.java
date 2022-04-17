@@ -9,9 +9,10 @@ public class Task_9 {
         int a = s.nextInt();
         int b = 0;
         int count = 0;
-        while (a!=0) {
-            b = a % 10;
-            a/=10;
+        int c=a;
+        while (c!=0) {
+            b = c % 10;
+            c/=10;
         if (b % 2 != 0) {
             count++;
         }
