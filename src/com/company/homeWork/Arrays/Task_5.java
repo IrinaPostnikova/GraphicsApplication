@@ -9,7 +9,6 @@ public class Task_5 {
         int n = 10;
         int a[] = inputArrayWithRandom(n, 0, 10);
         printArray(a, n);
-        int chet = 0;
         int sum = 0;
         for (int i = 0; i < n; i++) {
             if (i % 2 != 0) {

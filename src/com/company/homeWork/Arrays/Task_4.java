@@ -18,6 +18,6 @@ public class Task_4 {
                 maxIndex = i;
             }
         }
-        System.out.println("Индекс максимального элемента  " + maxIndex);
+        System.out.println("Индекс максимального элемента массива " + maxIndex);
     }
 }

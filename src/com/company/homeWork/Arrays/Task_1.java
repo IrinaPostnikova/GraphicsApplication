@@ -7,19 +7,18 @@ import java.util.Scanner;
 //Задача 1/Найти минимальный элемент массива
 public class Task_1 {
     public static void main(String[] args) {
-
-
-            int n = 20;
-            int a[] = inputArrayWithRandom(n, 0, 50);
-            printArray(a, n);
-            int min = a[0];
-            for (int i = 1; i < n; i++) {
-                if (a[i] < min) {
-                    min = a[i];
-                }
+        int n = 10;
+        int a[] = inputArrayWithRandom(n, 0, 50);
+        printArray(a, n);
+        int min = a[0];
+        for (int i = 1; i < n; i++) {
+            if (a[i] < min) {
+                min = a[i];
             }
-            System.out.println("Минимальный элемент  " + min);
-            }
+        }
+        System.out.println("Минимальный элемент массива " + min);
+    }
+
     public static int[] inputArrayWithRandom(int n, int a, int b) {
         Random random = new Random();
         int arr[] = new int[n];

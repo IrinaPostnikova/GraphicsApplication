@@ -13,7 +13,7 @@ public class Task_9 {
         printArray(a, n);
         for (int k = 0; k < n - 1; k++) {
             flag = false;
-            for (int i = 1; i < n; i++) {
+            for (int i = 1; i < n-k; i++) {
                 if (a[i] < a[i - 1]) {
                     flag = true;
                     int temp = a[i];
@@ -21,6 +21,7 @@ public class Task_9 {
                     a[i - 1] = temp;
                 }
             }
+            if (!flag) break;
         }
         printArray(a, n);
     }

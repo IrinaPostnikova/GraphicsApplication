@@ -17,6 +17,6 @@ public class Task_3 {
                 minIndex = i;
             }
         }
-        System.out.println("Индекс минимального элемента  " + minIndex);
+        System.out.println("Индекс минимального элемента массива " + minIndex);
     }
 }
