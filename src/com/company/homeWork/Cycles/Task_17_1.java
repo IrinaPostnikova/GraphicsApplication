@@ -7,9 +7,9 @@ public class Task_17_1 {
             int a = i % 10;
             int b = (i / 10) % 10;
              result = a + b ;
-            if (result == i) {
-                System.out.println(result);
-            }
+
+
         }
+
     }
 }
