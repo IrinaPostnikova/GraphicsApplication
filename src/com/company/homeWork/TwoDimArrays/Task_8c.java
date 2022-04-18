@@ -3,21 +3,24 @@ package com.company.homeWork.TwoDimArrays;
 import static com.company.homeWork.TwoDimArrays.Task_1.inputArray;
 import static com.company.homeWork.TwoDimArrays.Task_1.printArray;
 
-public class Task_2 {
+public class Task_8c {
     public static void main(String[] args) {
-        int n = 5;
-        int m = 6;
-        int a[][] = inputArray(n, m, 0, 100);
+        int n = 3;
+        int m = 3;
+        int a[][] = inputArray(n, m, 0, 9);
         printArray(a, n, m);
-        int max = a[0][0];
+        int d[] = new int[m];
         for (int i = 0; i < n; i++) {
+            int aMean = 1;
+            int sum=0;
             for (int j = 0; j < m; j++) {
-                if (a[i][j] > max) {
-                    max = a[i][j];
-                }
+                sum=sum + a[i][j];
+
+
+                aMean = aMean * a[i][j];
+                d[i] = aMean;
             }
+            System.out.println(" " + d[i]);
         }
-        System.out.println("Максимальный элемент массива");
-        System.out.println(max);
     }
 }
