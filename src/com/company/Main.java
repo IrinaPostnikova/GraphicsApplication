@@ -3,12 +3,16 @@ package com.company;
 import com.company.factory.FigureCreator;
 import com.company.figures.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         Point p1 = new Point(1, 3);
         Point p2 = new Point(1, 5);
         Point p3 = new Point(3, 5);
@@ -54,11 +58,35 @@ public class Main {
         FigureCreator fCr=new FigureCreator();
 
         Figure circle= fCr.create(pointsCircle);
-        System.out.println(circle);
+       // System.out.println(circle);
 
         // Figure f3 = new Figure(); // так не будет работать тк фигуры абстрактный класс
         //  Figure f4 =(Figure)Triangle; upcast
         //   ((Triangle)f4)downcast
 
-    }
+
+        //чтение из файла
+//        File file=new File("\\D:\\texts\\text");
+//        Scanner s=new Scanner(file);
+//        while (s.hasNextLine()){
+//            System.out.println(s.nextLine());
+//        }
+//          s.close();
+
+        File file=new File("test");
+        Scanner s=new Scanner(file);
+        while (s.hasNextLine()){
+            System.out.println(s.nextLine());
+        }
+          s.close();
+
+        //запись в файл
+        File file1=new File("file");
+        PrintWriter pw=new PrintWriter(file1);
+        pw.println(circle);
+        pw.close();
+
+
+
+ }
 }

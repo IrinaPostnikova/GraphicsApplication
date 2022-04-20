@@ -15,35 +15,24 @@ public class Task_12 {
         int b = s.nextInt();
         int c = 0;
         int d = 0;
-        int match = 0;
-
+        int count = 0;
         for (int i = 0; a != 0; i++) {
             c = a % 10;
             a /= 10;
-
             for (int j = 0; b != 0; j++) {
                 d = b % 10;
                 b /= 10;
-
                 if (c == d) {
-                    match++;
-
-
+                    count++;
                 }
-
-
             }
-
         }
-        if (match>0){
+        if (count> 0) {
             System.out.println("Yes");
-        }
-        else if (match==0){
+        } else if (count == 0) {
             System.out.println("no");
         }
-
     }
-
 }
 
 

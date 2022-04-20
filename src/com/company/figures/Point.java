@@ -20,5 +20,9 @@ public class Point {
     public String toString() {
         return "Point:  " + this.getX() + ";" + this.getY();
     }
+//    @Override
+//public StringToFile toString (){
+//
+//    }
 
 }
