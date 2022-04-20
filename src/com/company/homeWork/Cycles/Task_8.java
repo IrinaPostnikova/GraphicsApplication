@@ -11,26 +11,29 @@ public class Task_8 {
         int a = s.nextInt();
         int div = a;
 
-//        while (a < div * div * div) {
-//            if (a == div * div * div) {
-//                System.out.println(div);
-//            } else
-//                div=div/2;
-//        }
-//        for (int i = div; i <div*2 ; i++) {
-//            if  (a == i * i * i) {
-//                System.out.println(i);
-//            }
-//        }
-        for (int i = 1; i <=div ; i++) {
+        while (a < div * div * div) {
             if (a == div * div * div) {
                 System.out.println(div);
-            } else if(a>div*div*div) {
-                i=div/2;
-            }
-            else
+            } else
                 div=div/2;
         }
+        for (int i = div; i <div*2 ; i++) {
+            if  (a == i * i * i) {
+                System.out.println(i);
+            }
+        }
+//        for (int i = div; i <=1 ; i--) {
+//            if (a == div * div * div) {
+//                System.out.println(div);
+//            }
+//            div=div/2;
+//
+//            else if(a>div*div*div) {
+//                i=div/2;
+//            }
+//            else
+//                ;
+//        }
     }
 }
 
