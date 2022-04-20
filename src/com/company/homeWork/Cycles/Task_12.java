@@ -15,36 +15,37 @@ public class Task_12 {
         int b = s.nextInt();
         int c = 0;
         int d = 0;
+        int match = 0;
 
-        for (int i = 0; i < a; i++) {
-            for (int j = i; j < b; j++) {
-                while (a != 0) {
-                    c = a % 10;
-                    a /= 10;
-                    while (b != 0) {
-                        d = b % 10;
-                        b /= 10;
-                        if (c == d) {
-                            System.out.println("ya");
+        for (int i = 0; a != 0; i++) {
+            c = a % 10;
+            a /= 10;
 
+            for (int j = 0; b != 0; j++) {
+                d = b % 10;
+                b /= 10;
 
-                        } else {
-                            System.out.println("no");
-                        }
-            }
-
-        }
+                if (c == d) {
+                    match++;
 
 
-
+                }
 
 
             }
 
         }
-
-
-
+        if (match>0){
+            System.out.println("Yes");
+        }
+        else if (match==0){
+            System.out.println("no");
+        }
 
     }
+
 }
+
+
+
+

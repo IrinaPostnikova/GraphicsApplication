@@ -17,7 +17,7 @@ public class Task_4 {
             for (int j = 0; j < m; j++) {
                 if (a[i][j] > max) {
                     max = a[i][j];
-                    maxIndexi = i;
+                   maxIndexi = i;
                     maxIndexj = j;
                 }
             }
