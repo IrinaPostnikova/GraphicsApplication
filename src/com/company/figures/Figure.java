@@ -1,8 +1,9 @@
 package com.company.figures;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Figure {
+public abstract class Figure implements Serializable {
     ArrayList<Point> points;
 
     public Figure(ArrayList<Point> points) {
@@ -10,7 +11,7 @@ public abstract class Figure {
     }
 
     public String toString() {
-        return "Hello, I`m a " + this.getClass().getSimpleName().toString() + "  with points:  " + points + "my perimeter" +getPerimeter();
+        return "Hello, I`m a " + this.getClass().getSimpleName().toString() + " , with points:  " + points + " my perimeter is " +getPerimeter();
     }
 
     public double getPerimeter() {
@@ -34,11 +35,11 @@ public abstract class Figure {
     }
 
     public void printPerimeter() {
-        System.out.println("My perimeter is " + getPerimeter());
+        System.out.println(" My perimeter is " + getPerimeter());
     }
 
     public void printArea() {
-        System.out.println("My area is " + getArea());
+        System.out.println(" My area is " + getArea());
     }
 
 }
