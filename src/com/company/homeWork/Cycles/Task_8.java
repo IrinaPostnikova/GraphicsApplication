@@ -22,18 +22,10 @@ public class Task_8 {
                 System.out.println(i);
             }
         }
-//        for (int i = div; i <=1 ; i--) {
-//            if (a == div * div * div) {
-//                System.out.println(div);
-//            }
-//            div=div/2;
-//
-//            else if(a>div*div*div) {
-//                i=div/2;
-//            }
-//            else
-//                ;
-//        }
+
+
+
+
     }
 }
 
