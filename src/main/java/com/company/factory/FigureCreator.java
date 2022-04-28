@@ -1,6 +1,8 @@
 package com.company.factory;
 
-import com.company.figures.*;
+import com.company.factory.figures.Figure;
+import com.company.factory.figures.Point;
+
 
 import java.util.ArrayList;
 

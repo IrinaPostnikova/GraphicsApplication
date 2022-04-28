@@ -1,9 +1,8 @@
 package com.company.factory;
 
-import com.company.figures.Circle;
-import com.company.figures.Figure;
-import com.company.figures.Point;
-import com.company.figures.Polygone;
+import com.company.factory.figures.Figure;
+import com.company.factory.figures.Point;
+import com.company.factory.figures.Polygone;
 
 import java.util.ArrayList;
 

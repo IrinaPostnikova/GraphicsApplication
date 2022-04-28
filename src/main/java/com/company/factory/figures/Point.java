@@ -1,4 +1,4 @@
-package com.company.figures;
+package com.company.factory.figures;
 
 import java.io.Serializable;
 
@@ -20,7 +20,7 @@ public class Point implements Serializable {
     }
 
     public String toString() {
-        return "Point:  " + this.getX() + ";" + this.getY();
+        return "Point  " + this.getX() + ";" + this.getY();
     }
 //    @Override
 //public StringToFile toString (){

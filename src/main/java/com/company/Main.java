@@ -1,26 +1,29 @@
 package com.company;
 
 import com.company.factory.FigureCreator;
-import com.company.figures.*;
+import com.company.factory.figures.Figure;
+import com.company.factory.figures.Frame;
+import com.company.factory.figures.MyPanel;
+import com.company.factory.figures.Point;
+
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Point p1 = new Point(1, 3);
-        Point p2 = new Point(1, 5);
-        Point p3 = new Point(3, 5);
-        Point p4 = new Point(5, 3);
-        Point p5 = new Point(3, 1);
+        Point p1 = new Point(100, 300);
+        Point p2 = new Point(100, 500);
+        Point p3 = new Point(300, 500);
+        Point p4 = new Point(500, 300);
+        Point p5 = new Point(300, 100);
 
         ArrayList<Point> pointsRect = new ArrayList<>(Arrays.asList(p1, p3, p4, p5));
         ArrayList<Point> pointsTr = new ArrayList<>(Arrays.asList(p1, p2, p3));
         ArrayList<Point> pointsPoly = new ArrayList<>(Arrays.asList(p1, p2, p3, p4, p5));
-        ArrayList<Point> pointsCircle = new ArrayList<>(Arrays.asList(p5, p3));
+        ArrayList<Point> pointsCircle = new ArrayList<>(Arrays.asList(p1, p3));
 
 
 //        System.out.println(p1.toString());
@@ -55,9 +58,11 @@ public class Main {
         Figure rect = fCr.create(pointsRect);
         Figure triangle = fCr.create(pointsTr);
         Figure poly = fCr.create(pointsPoly);
+        System.out.println("center" + rect.getCenter(pointsRect) );
 
 
         ArrayList<Figure> allFigures = new ArrayList<>(Arrays.asList(circle, rect, triangle, poly));
+
         try (ObjectOutputStream oos1 = new ObjectOutputStream(new FileOutputStream("figures"))) {
             oos1.writeObject(allFigures);
         } catch (Exception ex) {
@@ -73,6 +78,16 @@ public class Main {
         }
         for (Figure f : listFigures)
             System.out.println(f);
+
+        //окошко для рисования
+        Frame fr= new Frame();
+        MyPanel mp=new MyPanel(listFigures);
+        fr.add(mp);
+        fr.setVisible(true);
+
+
+
+
 
 //        FigureCreator fCr3 = new FigureCreator();
 //        Figure circle = fCr.create(pointsCircle);
@@ -119,8 +134,7 @@ public class Main {
 //            System.out.println(str);
 //            String qq = String.valueOf(str.indexOf("a"));
 //            System.out.println(qq);
-//
-//        }
+        //        }
 
 
 //        сериализация

@@ -1,4 +1,4 @@
-package com.company.figures;
+package com.company.factory.figures;
 
 import java.util.ArrayList;
 
@@ -13,6 +13,27 @@ public class Triangle extends Figure {
 //        this.a = a;
 //        this.b = b;
 //        this.c = c;
+    }
+@Override
+public double getRadius() {
+
+    return 0;
+}
+
+
+    @Override
+    public Figure move(int a, int b) {
+        return null;
+    }
+
+    @Override
+    public Figure rotate(int n) {
+        return null;
+    }
+
+    @Override
+    public Figure scale(int n) {
+        return null;
     }
 
 //    public Point getA() {
