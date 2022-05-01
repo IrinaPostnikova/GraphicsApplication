@@ -15,16 +15,16 @@ public class MyPanel extends JPanel {
 
     public void paintComponent(Graphics gr) {
         for (var fig : figures) {
+            if (fig.getPoints().size() == 2) {
+                gr.drawOval((int) fig.getPoints().get(0).getX(), (int) fig.getPoints().get(0).getY(), (int) (((Circle) fig).getRadius() * 2),(int) ((Circle)fig).getRadius() * 2);
+            } else {
+                for (int i = 0; i < fig.getPoints().size() - 1; i++) {
 
-            for (int i = 0; i < fig.getPoints().size() - 1; i++) {
-                if (fig.getPoints().size()==2){
-                    gr.drawOval((int)fig.getPoints().get(0).getX(), (int) fig.getPoints().get(0).getY(), (int) (fig.getRadius()*2), (int) (fig.getRadius()*2));
+                    gr.drawLine((int) fig.getPoints().get(i).getX(), (int) fig.getPoints().get(i).getY(), (int) fig.getPoints().get(i + 1).getX(), (int) fig.getPoints().get(i + 1).getY());
                 }
-                  else{
-                gr.drawLine((int) fig.getPoints().get(i).getX(), (int) fig.getPoints().get(i).getY(), (int) fig.getPoints().get(i + 1).getX(), (int) fig.getPoints().get(i + 1).getY());
+                gr.drawLine((int) fig.getPoints().get(0).getX(), (int) fig.getPoints().get(0).getY(), (int) fig.getPoints().get(fig.getPoints().size() - 1).getX(), (int) fig.getPoints().get(fig.getPoints().size() - 1).getY());
             }
-            gr.drawLine((int) fig.getPoints().get(0).getX(), (int) fig.getPoints().get(0).getY(), (int) fig.getPoints().get(fig.getPoints().size() - 1).getX(), (int) fig.getPoints().get(fig.getPoints().size() - 1).getY());
-        }}
+        }
 //    gr.setColor(new Color(255,0,0));
 //    gr.fillOval(0,0,300,300);
 //    gr.setColor(Color.green);

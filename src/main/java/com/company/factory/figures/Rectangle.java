@@ -18,24 +18,20 @@ public class Rectangle extends Figure {
     }
 
     @Override
-    public Figure move(int a, int b) {
-        return null;
+    public void move(Point a) {
+
     }
 
     @Override
-    public Figure rotate(int n) {
-        return null;
+    public void rotate(int n) {
+
     }
 
     @Override
-    public Figure scale(int n) {
-        return null;
-    }
-    @Override
-    public double getRadius() {
+    public void scale(int n) {
 
-        return 0;
     }
+
 //    public Point getA() {
 //        return a;
 //    }

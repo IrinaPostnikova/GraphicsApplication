@@ -14,26 +14,22 @@ public class Triangle extends Figure {
 //        this.b = b;
 //        this.c = c;
     }
-@Override
-public double getRadius() {
 
-    return 0;
-}
 
 
     @Override
-    public Figure move(int a, int b) {
-        return null;
+    public void move(Point a) {
+
     }
 
     @Override
-    public Figure rotate(int n) {
-        return null;
+    public void rotate(int n) {
+
     }
 
     @Override
-    public Figure scale(int n) {
-        return null;
+    public void scale(int n) {
+
     }
 
 //    public Point getA() {

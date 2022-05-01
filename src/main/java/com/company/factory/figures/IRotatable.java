@@ -1,5 +1,5 @@
 package com.company.factory.figures;
 
 public interface IRotatable {
-    public Figure rotate (int n);
+    public void rotate (int a);
 }

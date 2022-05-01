@@ -1,4 +1,4 @@
-package com.company.factory.figures;
+package com.company.AWT;
 
 import javax.swing.*;
 import java.awt.*;

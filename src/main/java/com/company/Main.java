@@ -58,7 +58,7 @@ public class Main {
         Figure rect = fCr.create(pointsRect);
         Figure triangle = fCr.create(pointsTr);
         Figure poly = fCr.create(pointsPoly);
-        System.out.println("center" + rect.getCenter(pointsRect) );
+        System.out.println("center" + rect.getCenter() );
 
 
         ArrayList<Figure> allFigures = new ArrayList<>(Arrays.asList(circle, rect, triangle, poly));

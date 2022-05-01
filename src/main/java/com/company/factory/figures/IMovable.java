@@ -1,5 +1,5 @@
 package com.company.factory.figures;
 
 public interface IMovable {
-    public Figure move (int a, int b);
+    public void move (Point a);
 }

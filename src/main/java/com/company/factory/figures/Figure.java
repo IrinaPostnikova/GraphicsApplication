@@ -1,19 +1,34 @@
 package com.company.factory.figures;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
+@JsonAutoDetect
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Triangle.class, name = "Triangle"),
+        @JsonSubTypes.Type(value = Rectangle.class, name = "Rectangle"),
+        @JsonSubTypes.Type(value = Circle.class, name = "Circle"),
+        @JsonSubTypes.Type(value = Polygone.class, name = "Polygone"),
+}
+)
+
 public abstract class Figure implements Serializable, IMovable, IScalable, IRotatable {
     ArrayList<Point> points;
-    double radius;
+
 
     public Figure(ArrayList<Point> points) {
         this.points = points;
-        this.radius=getRadius();
+
     }
 
+
     public String toString() {
-        return "Hello, I`m a " + this.getClass().getSimpleName().toString() + " , with points:  " + points + " my perimeter is " + getPerimeter() + " my area is " + getArea() ;
+        return "Hello, I`m a " + this.getClass().getSimpleName().toString() + " , with points:  " + points + " my perimeter is " + getPerimeter() + " my area is " + getArea();
     }
 
     public double getPerimeter() {
@@ -28,19 +43,18 @@ public abstract class Figure implements Serializable, IMovable, IScalable, IRota
 
     public double getArea() {
         double area = 0;
-        for (int i = 0; i < this.points.size(); i++) {
-            int temp = i + 1 < points.size() ? i + 1 : 0;
-            area += points.get(i).getX() * points.get(temp).getY() - points.get(i).getY() * points.get(temp).getX();
+        for (int i = 0; i < this.points.size() - 1; i++) {
+            area += (points.get(i).getX() * points.get(i + 1).getY()) - (points.get(i + 1).getX() * points.get(i).getY());
         }
-        // area += points.get(i).getX() * points.get(i + 1).getY() - points.get(i).getY() * points.get(i + 1).getX();
+        area += (points.get(points.size() - 1).getX() * points.get(0).getY()) - (points.get(0).getX() * points.get(points.size() - 1).getX());
         return Math.abs(area / 2);
     }
 
-    public Point getCenter(ArrayList<Point> points) {
+    public Point getCenter() {
         double minX = points.get(0).getX();
         double maxX = points.get(0).getX();
-        double minY = points.get(0).getX();
-        double maxY = points.get(0).getX();
+        double minY = points.get(0).getY();
+        double maxY = points.get(0).getY();
 
         for (var point : this.points) {
             if (point.getX() > maxX) {
@@ -58,7 +72,10 @@ public abstract class Figure implements Serializable, IMovable, IScalable, IRota
         }
         return new Point(((maxX + minX) / 2), ((maxY + minY) / 2));
     }
-    public ArrayList<Point> getPoints(){        return this.points;    }
+
+    public ArrayList<Point> getPoints() {
+        return this.points;
+    }
 
     public void printPerimeter() {
         System.out.println(" My perimeter is " + getPerimeter());
@@ -67,22 +84,29 @@ public abstract class Figure implements Serializable, IMovable, IScalable, IRota
     public void printArea() {
         System.out.println(" My area is " + getArea());
     }
-    public double getRadius() {
-        Point a = points.get(0);
-        Point b = points.get(1);
-        double radius = Math.sqrt((Math.pow((b.getX() - a.getX()), 2)) + (Math.pow((b.getY() - a.getY()), 2)));
-        return radius;
+
+
+    public void move(Point a) {
+        for (int i = 0; i < points.size(); i++) {
+            points.get(i).setX(points.get(i).getX() + a.getX());
+            points.get(i).setY(points.get(i).getY() + a.getY());
+        }
     }
 
-    public void move() {
+    public void rotate(int a) {
 
+        for (int i = 0; i < points.size(); i++) {
+            points.get(i).setX(((points.get(i).getX() - getCenter().getX()) * Math.cos(Math.toRadians(a)) + getCenter().getX()));
+            points.get(i).setY(((points.get(i).getY() - getCenter().getY()) * Math.cos(Math.toRadians(a)) + getCenter().getY()));
+        }
     }
 
-    public void rotate() {
-
-    }
-
-    public void scale() {
-
+    public void scale(int b) {
+        for (int i = 0; i < points.size(); i++) {
+            points.get(i).setX(((points.get(i).getX() - getCenter().getX() * b) + getCenter().getX()));
+            points.get(i).setY(((points.get(i).getY() - getCenter().getY() * b) + getCenter().getY()));
+        }
+        getPerimeter();
+        getArea();
     }
 }
