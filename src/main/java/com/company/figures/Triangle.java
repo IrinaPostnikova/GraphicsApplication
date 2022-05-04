@@ -1,4 +1,4 @@
-package com.company.factory.figures;
+package com.company.figures;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class Triangle extends Figure {
     }
 
     @Override
-    public void rotate(int n) {
+    public void rotate(double n) {
 
     }
 

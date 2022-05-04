@@ -1,8 +1,19 @@
-package com.company.factory.figures;
+package com.company.figures;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+
+import java.io.Serial;
 import java.io.Serializable;
+@JsonAutoDetect
+
 
 public class Point implements Serializable {
+    @Serial
+    private static final long serialVersionUID=1L;
+    public Point() {
+    }
+
     private double x;
     private double y;
 
@@ -30,9 +41,6 @@ public class Point implements Serializable {
     public String toString() {
         return "Point  " + this.getX() + ";" + this.getY();
     }
-//    @Override
-//public StringToFile toString (){
-//
-//    }
+
 
 }

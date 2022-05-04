@@ -1,15 +1,20 @@
 package com.company;
 
 import com.company.factory.FigureCreator;
-import com.company.factory.figures.Figure;
-import com.company.factory.figures.Frame;
-import com.company.factory.figures.MyPanel;
-import com.company.factory.figures.Point;
+import com.company.figures.Figure;
+import com.company.figures.Frame;
+import com.company.figures.MyPanel;
+import com.company.figures.Point;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+
+import static com.company.figures.Json.readFromFileJson;
+import static com.company.figures.Json.writeToFileJson;
 
 public class Main {
 
@@ -58,110 +63,72 @@ public class Main {
         Figure rect = fCr.create(pointsRect);
         Figure triangle = fCr.create(pointsTr);
         Figure poly = fCr.create(pointsPoly);
-        System.out.println("center" + rect.getCenter() );
+        System.out.println("center" + rect.getCenter());
+        System.out.println(pointsTr);
+        triangle.rotate(30);
+        System.out.println(triangle);
 
 
         ArrayList<Figure> allFigures = new ArrayList<>(Arrays.asList(circle, rect, triangle, poly));
 
-        try (ObjectOutputStream oos1 = new ObjectOutputStream(new FileOutputStream("figures"))) {
-            oos1.writeObject(allFigures);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+//запись в Json
+        StringWriter writer = new StringWriter();
+        ObjectMapper mapper = new ObjectMapper();
+        BufferedWriter bWriter = new BufferedWriter(new FileWriter("fileJson", true));
+        for (var f : allFigures) {
+            mapper.writeValue(writer, f);
+            writer.write("\n");
         }
+        bWriter.write(writer.toString());
+        bWriter.close();
+        System.out.println(writer.toString());
 
 
-        ArrayList<Figure> listFigures = new ArrayList<Figure>();
-        try (ObjectInputStream ois1 = new ObjectInputStream(new FileInputStream("figures"))) {
-            listFigures = ((ArrayList<Figure>) ois1.readObject());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        for (Figure f : listFigures)
-            System.out.println(f);
+        //считываем из файла Json
+        BufferedReader bReader =new BufferedReader(new FileReader("fileJson"));
+        ObjectMapper oMapper =new ObjectMapper();
 
-        //окошко для рисования
-        Frame fr= new Frame();
-        MyPanel mp=new MyPanel(listFigures);
-        fr.add(mp);
-        fr.setVisible(true);
-
-
-
-
-
-//        FigureCreator fCr3 = new FigureCreator();
-//        Figure circle = fCr.create(pointsCircle);
+//        ArrayList<Figure> listFigures = new ArrayList<Figure>();
 //
-//        FigureCreator fCr2 = new FigureCreator();
-//        Figure rect = fCr.create(pointsRect);
+//        ObjectMapper oMapper =new ObjectMapper();
+//        String json;
+//        while ((json= bReader.readLine() )!=null) {
+//            listFigures.add(oMapper.readValue(json, Figure.class));
+//        }
+//        bReader.close();
+//        System.out.println("schitano");
+//        return listFigures;
 
+        //  writeToFileJson(allFigures,"J");
 
-        // System.out.println(circle);
+//        try (ObjectOutputStream oos1 = new ObjectOutputStream(new FileOutputStream("figures"))) {
+//            oos1.writeObject(allFigures);
+//        } catch (Exception ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//
+//
+//        ArrayList<Figure> listFigures = new ArrayList<Figure>();
+//        try (ObjectInputStream ois1 = new ObjectInputStream(new FileInputStream("figures"))) {
+//            listFigures = ((ArrayList<Figure>) ois1.readObject());
+//        } catch (Exception ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//        for (Figure f : listFigures)
+//            System.out.println(f);
+
+        // ArrayList<Figure> figFromJson=readFromFileJson("J");
+
+//        //окошко для рисования
+//        Frame fr= new Frame();
+//        MyPanel mp=new MyPanel(figFromJson);
+//        fr.add(mp);
+//        fr.setVisible(true);
+
 
         // Figure f3 = new Figure(); // так не будет работать тк фигуры абстрактный класс
         //  Figure f4 =(Figure)Triangle; upcast
         //   ((Triangle)f4)downcast
-
-
-        //чтение из файла
-//        File file=new File("\\D:\\texts\\text");
-//        Scanner s=new Scanner(file);
-//        while (s.hasNextLine()){
-//            System.out.println(s.nextLine());
-//        }
-//          s.close();//не видит файл на компе
-
-//        File file=new File("test");
-//        Scanner s=new Scanner(file);
-//        while (s.hasNextLine()){
-//            System.out.println(s.nextLine());
-//        }
-//          s.close();
-
-        //запись в файл
-//        File file1=new File("file");
-//        PrintWriter pw=new PrintWriter(file1);
-//        pw.println(circle);
-//        pw.close();
-//
-//        //чтение из файла через buffered
-//        File file1 = new File("file");
-//        FileReader fr = new FileReader(file1);
-//        BufferedReader reader = new BufferedReader(fr);
-//        String str;
-//
-//        while ((str = reader.readLine()) != null) {
-//            System.out.println(str);
-//            String qq = String.valueOf(str.indexOf("a"));
-//            System.out.println(qq);
-        //        }
-
-
-//        сериализация
-
-//        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("figures"))) {
-//            oos.writeObject(circle);
-//            oos.writeObject(rect);
-//            oos.writeObject(triangle);
-//            oos.writeObject(poly);
-//        } catch (Exception ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//
-////десериализация
-//        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("figures"))) {
-//            Figure figure = (Figure) ois.readObject();
-//            Figure figure2 = (Figure) ois.readObject();
-//            Figure figure1 = (Figure) ois.readObject();
-//            Figure figure3 = (Figure) ois.readObject();
-//            System.out.println(figure);
-//            System.out.println(figure2);
-//            System.out.println(figure1);
-//            System.out.println(figure3);
-//
-//        } catch (Exception ex) {
-//            System.out.println(ex.getMessage());
-//        }
 
 
     }

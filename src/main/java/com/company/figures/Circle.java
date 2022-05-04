@@ -1,6 +1,9 @@
-package com.company.factory.figures;
+package com.company.figures;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.ArrayList;
+@JsonIgnoreProperties({"radius","perimeter", "area","center"})
 
 public class Circle extends Figure {
  double radius;
@@ -37,7 +40,7 @@ public class Circle extends Figure {
     }
 
     @Override
-    public void rotate(int n) {
+    public void rotate(double n) {
 
     }
 

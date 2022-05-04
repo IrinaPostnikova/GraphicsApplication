@@ -1,4 +1,4 @@
-package com.company.factory.figures;
+package com.company.figures;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ public class Polygone extends Figure {
     }
 
     @Override
-    public void rotate(int a) {
+    public void rotate(double a) {
 
     }
 
