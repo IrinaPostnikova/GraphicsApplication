@@ -117,13 +117,13 @@ public class Main {
 //        for (Figure f : listFigures)
 //            System.out.println(f);
 
-        // ArrayList<Figure> figFromJson=readFromFileJson("J");
+       //  ArrayList<Figure> figFromJson=readFromFileJson("J");
 
-//        //окошко для рисования
-//        Frame fr= new Frame();
-//        MyPanel mp=new MyPanel(figFromJson);
-//        fr.add(mp);
-//        fr.setVisible(true);
+        //окошко для рисования
+        Frame fr= new Frame();
+        MyPanel mp=new MyPanel(allFigures);
+        fr.add(mp);
+        fr.setVisible(true);
 
 
         // Figure f3 = new Figure(); // так не будет работать тк фигуры абстрактный класс
