@@ -7,11 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Iri_Projects" />
+        <module name="GraphicsApplication" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Iri_Projects" target="17" />
+      <module name="GraphicsApplication" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -1,5 +1,9 @@
 package com.company.figures;
 
+
+import com.company.interfaces.IMovable;
+import com.company.interfaces.IRotatable;
+import com.company.interfaces.IScalable;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -83,6 +87,7 @@ public abstract class Figure implements Serializable, IMovable, IScalable, IRota
     }
 
     public ArrayList<Point> getPoints() {
+
         return this.points;
     }
 
@@ -105,21 +110,41 @@ public abstract class Figure implements Serializable, IMovable, IScalable, IRota
     public void rotate(double a) {
         double side = 0;
         a = Math.toRadians(a);
+        Point center=getCenter();
         for (int i = 0; i < points.size(); i++) {
-            side = Math.sqrt(Math.pow((points.get(i).getX() - getCenter().getX()), 2) + Math.pow((points.get(i).getY() - getCenter().getY()), 2));
 
-            points.get(i).setX(side * (Math.cos(a)) + getCenter().getX());
-            points.get(i).setY(side * (Math.cos(a)) + getCenter().getY());
-            System.out.println(this.points);
+            double x= ((points.get(i).getX()-center.getX())*Math.cos(a)-(points.get(i).getY()-center.getY())*Math.sin(a));
+            double y= ((points.get(i).getX()-center.getX())*Math.cos(a)+(points.get(i).getY()-center.getY())*Math.sin(a));
+            points.set(i,new Point(x+center.getX(),y+center.getY()));
         }
     }
 
     public void scale(int b) {
+        Point center=getCenter();
         for (int i = 0; i < points.size(); i++) {
-            points.get(i).setX((Math.abs(points.get(i).getX() - getCenter().getX() * b) + getCenter().getX()));
-            points.get(i).setY((Math.abs(points.get(i).getY() - getCenter().getY() * b) + getCenter().getY()));
+            points.get(i).setX((((points.get(i).getX() - center.getX()) * b) + center.getX()));
+            points.get(i).setY((((points.get(i).getY() - center.getY()) * b) + center.getY()));
         }
         getPerimeter();
         getArea();
+    }
+
+    public boolean containPoint(int x, int y) {
+        boolean flag = false;
+        for (int i = 0; i < this.getPoints().size(); i++) {
+            int j = i == this.getPoints().size() - 1 ? 0 : i + 1;
+            double x1 = this.getPoints().get(i).getX();
+            double x2 = this.getPoints().get(j).getX();
+            double y1 = this.getPoints().get(i).getY();
+            double y2 = this.getPoints().get(j).getY();
+            if (x2 - x1 != 0) {
+                double a = (y2 - y1) / (x2 - x1);
+                double b = y1 - a * x1;
+                if ((Math.abs(y - (int) (a * x + b)) <= 2)) flag = true;
+            } else {
+                if ((Math.abs(x - x1) <= 2) && (y > Math.min(y1, y2) && y <= Math.max(y2, y1))) flag = true;
+            }
+        }
+        return flag;
     }
 }
